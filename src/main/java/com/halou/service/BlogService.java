@@ -30,4 +30,9 @@ public interface BlogService {
     int like(int id);
 
     int dislike(int id);
+
+
+    List<Blog> list3();
+
+    int pageview(int id);
 }

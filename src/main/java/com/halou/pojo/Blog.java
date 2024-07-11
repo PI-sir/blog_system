@@ -17,4 +17,5 @@ public class Blog {
     private Integer like;
     private Integer collect;
     private Integer kindid;
+    private int pageview;
 }

@@ -37,10 +37,21 @@ public class BlogController {
         else  return R.fail("异常");
     }
 
+    //博客浏览量加一
+    @PutMapping("pageview/{id}")
+    public R pageview(@PathVariable int id){
+        int i=blogService.pageview(id);
+        System.out.println(blogService.show(id));
+
+        if(i==1)
+            return R.ok(null);
+        else  return R.fail("异常");
+    }
     //查询博客
     @GetMapping("show/{id}")
     public R show(@PathVariable int id){
         Blog blog=blogService.show(id);
+        System.out.println(blog);
         if(blog!=null)
         return R.ok(blog);
         else return R.fail("异常");
@@ -118,6 +129,16 @@ public class BlogController {
             return R.fail("异常");
         else return R.ok(null);
     }
+
+    //显示最热门10篇文章
+    @GetMapping("list3")
+    public R list3(){
+        List<Blog> list=blogService.list3();
+        if(list!=null)
+            return R.ok(list);
+        else return R.fail("异常");
+    }
+
 
 
 

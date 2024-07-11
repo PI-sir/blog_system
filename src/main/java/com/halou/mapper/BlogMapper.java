@@ -31,11 +31,15 @@ public interface BlogMapper {
             "<if test='like != null'> like_count = #{like},</if>",
             "<if test='collect != null'> collect_count = #{collect},</if>",
             "<if test='kindid != null'>kindid = #{kindid}</if>",
+            "<if test='pageview != null'>pageview = #{pageview}</if>",
             "</set>",
             "WHERE id = #{id}",
             "</script>"
     })
     int update(Blog blog);
+
+    @Update("UPDATE blogs SET pageview = COALESCE(pageview, 0) + 1 WHERE id = #{id}")
+    int pageview(int id);
 
     @Select("SELECT * FROM blogs WHERE id = #{id}")
     Blog show(int id);
@@ -64,4 +68,13 @@ public interface BlogMapper {
 
     @Update("UPDATE blogs SET like_count = like_count - 1 WHERE id = #{id}")
     int dislike(int id);
+
+
+    @Select("SELECT id, author, title, text, createtime, state, like_count, collect_count, kindid, pageview\n" +
+            "FROM blogs\n" +
+            "ORDER BY pageview DESC\n" +
+            "LIMIT 10;")
+    List<Blog> list3();
+
+
 }

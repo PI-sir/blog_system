@@ -87,4 +87,16 @@ public class BlogServiceImpl implements BlogService{
     public int dislike(int id) {
         return blogMapper.dislike(id);
     }
+
+    @Override
+    public List<Blog> list3() {
+        return blogMapper.list3();
+    }
+
+    @Override
+    public int pageview(int id) {
+        return blogMapper.pageview(id);
+    }
+
+
 }
