@@ -99,5 +99,26 @@ public class BlogController {
     }
 
 
+    //博客点赞
+    @PutMapping("like/{id}")
+    public R like(@PathVariable int id){
+        int i=blogService.like(id);
+        System.out.println(id);
+        if(i==0)
+            return R.fail("异常");
+        else return R.ok(null);
+    }
+
+    //取消博客点赞
+    @PutMapping("dislike/{id}")
+    public R dislike(@PathVariable int id){
+        int i=blogService.dislike(id);
+        System.out.println(id);
+        if(i==0)
+            return R.fail("异常");
+        else return R.ok(null);
+    }
+
+
 
 }

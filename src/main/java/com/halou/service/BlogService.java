@@ -26,4 +26,8 @@ public interface BlogService {
    PageBean<Blog> list2(int pageSize, int currentPage);
 
    List<Blog> list(String name);
+
+    int like(int id);
+
+    int dislike(int id);
 }

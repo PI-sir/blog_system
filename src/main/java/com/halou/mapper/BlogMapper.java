@@ -58,4 +58,10 @@ public interface BlogMapper {
 
     @Select("select * from blogs where title=#{name}")
     List<Blog> list(String name);
+
+    @Update("UPDATE blogs SET like_count = like_count + 1 WHERE id = #{id}")
+    int like(int id);
+
+    @Update("UPDATE blogs SET like_count = like_count - 1 WHERE id = #{id}")
+    int dislike(int id);
 }

@@ -76,4 +76,15 @@ public class BlogServiceImpl implements BlogService{
     public List<Blog> list(String name) {
         return blogMapper.list(name);
     }
+
+    //
+    @Override
+    public int like(int id) {
+        return blogMapper.like(id);
+    }
+
+    @Override
+    public int dislike(int id) {
+        return blogMapper.dislike(id);
+    }
 }
