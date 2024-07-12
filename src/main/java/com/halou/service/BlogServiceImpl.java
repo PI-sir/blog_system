@@ -98,5 +98,15 @@ public class BlogServiceImpl implements BlogService{
         return blogMapper.pageview(id);
     }
 
+    @Override
+    public int kindadd(Kind kind) {
+        return blogMapper.kindadd(kind);
+    }
+
+    @Override
+    public List<Blog> list4(String kindname) {
+        return blogMapper.list4(kindname);
+    }
+
 
 }

@@ -1,10 +1,7 @@
 package com.halou.mapper;
 
 
-import com.halou.pojo.Blog;
-import com.halou.pojo.Categories;
-import com.halou.pojo.Favourite;
-import com.halou.pojo.Tag;
+import com.halou.pojo.*;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -77,4 +74,13 @@ public interface BlogMapper {
     List<Blog> list3();
 
 
+    @Insert("insert into kinds (blogid , kindid) values (#{blogid} , #{kindid})")
+    int kindadd(Kind kind);
+
+    @Select("SELECT b.*\n" +
+            "FROM blogs b\n" +
+            "JOIN kinds k ON b.id = k.blogid\n" +
+            "JOIN categories c ON k.kindid = c.id\n" +
+            "WHERE c.kindname = #{kingname};")
+    List<Blog> list4(String kindname);
 }

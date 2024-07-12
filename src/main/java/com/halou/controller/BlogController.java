@@ -140,6 +140,26 @@ public class BlogController {
     }
 
 
+    //把文章添加到分类里面去
+    @PostMapping("kindadd")
+    public R kindadd(@RequestBody Kind kind){
+        int i=blogService.kindadd(kind);
+        if(i==0)
+            return R.fail("异常");
+        else return R.ok(null);
+    }
+
+    //查询分类下面的文章
+    @GetMapping("list4/{kindname}")
+    public R list4(@PathVariable String kindname){
+        List<Blog> list=blogService.list4(kindname);
+        if(list!=null)
+            return R.ok(list);
+        else return R.fail("异常");
+    }
+
+    //查询一个作者的所有文章
+
 
 
 }

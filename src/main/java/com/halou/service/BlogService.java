@@ -1,9 +1,6 @@
 package com.halou.service;
 
-import com.halou.pojo.Blog;
-import com.halou.pojo.Categories;
-import com.halou.pojo.Favourite;
-import com.halou.pojo.Tag;
+import com.halou.pojo.*;
 import com.halou.utils.PageBean;
 
 import java.util.List;
@@ -35,4 +32,8 @@ public interface BlogService {
     List<Blog> list3();
 
     int pageview(int id);
+
+    int kindadd(Kind kind);
+
+    List<Blog> list4(String kindname);
 }
